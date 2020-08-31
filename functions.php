@@ -25,6 +25,10 @@ function woocommerce_product_custom_fields_save($post_id)
 {
     // Custom Product Text Field
     $woocommerce_custom_product_text_field = $_POST['_custom_product_text_field'];
-    // if (!empty($woocommerce_custom_product_text_field))
+    if (!empty($woocommerce_custom_product_text_field)){
         update_post_meta($post_id, '_custom_product_text_field', esc_attr($woocommerce_custom_product_text_field));
+    } else {
+        delete_post_meta($post_id, '_custom_product_text_field');
+    }
+
 }
